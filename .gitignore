@@ -7,6 +7,5 @@
 # AllowList
 !.README.md
 !.gitignore
-!pull_all_repository.sh
-!pull_github_repository.sh
-
+!allpull.sh
+!pull.sh
