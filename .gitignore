@@ -1,0 +1,10 @@
+# All ignore
+/*
+/.**
+
+
+# AllowList
+!.README.md
+!.gitignore
+
+
