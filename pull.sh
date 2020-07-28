@@ -21,5 +21,4 @@ for i in ${dirary[@]}; do
         else
                 echo -e " : \033[0;31mFailed\033[0;39m"
         fi
-        cd ../
 done
