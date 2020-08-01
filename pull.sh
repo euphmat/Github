@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Github Directory
+# Github Directory Path
 files=~/Github/*
 
+# main
 dirary=()
 for filepath in $files; do
   if [ -d $filepath ] ; then
