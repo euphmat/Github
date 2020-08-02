@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Github Repository Pull
+cd ~/github
+git pull
+
 # Github Directory Path
 files=~/Github/*
 
@@ -24,7 +28,7 @@ for i in ${dirary[@]}; do
       echo -e " : \033[0;31mFailed\033[0;39m"
     fi
   else
-    echo -e " : \033[0;33mNot_Git_Directory\033[0;39m"
+    echo -e " : \033[0;33mnot Git Repository\033[0;39m"
   fi
 
 done
