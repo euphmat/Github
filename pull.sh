@@ -13,13 +13,18 @@ done
 
 echo ""
 for i in ${dirary[@]}; do
-        reponame=`echo $i | awk -F '/' '{print $(NF)}'`
-        echo -en "\033[0;34m$reponame\033[0;39m"
-        echo -n "($i)"
-        cd $i
-        if [[ `git pull > /dev/null 2>&1 ; echo $?` = 0 ]]; then
-                echo -e " : \033[0;32mSuccessful\033[0;39m"
-        else
-                echo -e " : \033[0;31mFailed\033[0;39m"
-        fi
+  reponame=`echo $i | awk -F '/' '{print $(NF)}'`
+  echo -en "\033[0;34m$reponame\033[0;39m"
+  echo -n "($i)"
+  cd $i
+  if [[ -d ./.git/ ]]; then
+    if [[ `git pull > /dev/null 2>&1 ; echo $?` = 0 ]]; then
+      echo -e " : \033[0;32mSuccessful\033[0;39m"
+    else
+      echo -e " : \033[0;31mFailed\033[0;39m"
+    fi
+  else
+    echo -e " : \033[0;33mNot_Git_Directory\033[0;39m"
+  fi
+
 done
