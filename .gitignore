@@ -1,11 +1,9 @@
 # All ignore
+# ======================
 /*
 /.**
 
-
-
-# AllowList
-!.README.md
+# Allow List
+# ======================
 !.gitignore
-!allpull.sh
 !pull.sh
