@@ -6,4 +6,5 @@
 # Allow List
 # ======================
 !.gitignore
-!pull.sh
+!.pull.sh
+!.status.sh
