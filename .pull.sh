@@ -25,7 +25,6 @@ done
 for i in ${dirary[@]}; do
   reponame=`echo $i | awk -F '/' '{print $(NF)}'`
   echo -en "└─\033[0;34m$reponame\033[0;39m"
-  echo -n "($i)"
   cd $i
   if [[ -d ./.git/ ]]; then
     if [[ `git pull > /dev/null 2>&1 ; echo $?` = 0 ]]; then
