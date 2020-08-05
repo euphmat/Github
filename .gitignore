@@ -8,3 +8,4 @@
 !.gitignore
 !.pull.sh
 !.status.sh
+!.clone.sh
