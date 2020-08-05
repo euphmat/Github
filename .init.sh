@@ -1,7 +1,9 @@
 #!/bin/bash
 set -Cu
 
+# =====================================================================================
 # install Homebrew
+# =====================================================================================
 if [[ `type brew > /dev/null 2>&1; echo $?` = 0 ]]; then
         echo "Homebrew Already Installed."
 else
@@ -9,7 +11,9 @@ else
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
+# =====================================================================================
 # install Git
+# =====================================================================================
 if [[ `type git > /dev/null 2>&1; echo $?` = 0 ]]; then
         echo "Git Already Installed."
 else
@@ -17,7 +21,9 @@ else
         brew install git
 fi
 
-# Check Github Directory && Clone 
+# =====================================================================================
+# Check Github Directory && git Clone 
+# =====================================================================================
 cd ~
 if [[ -d ./Github/ ]]; then
         echo "The Github directory already exists."
@@ -34,3 +40,12 @@ else
         done < $data_source
 fi
 rm repo.txt
+
+# =====================================================================================
+# dotfiles init
+# =====================================================================================
+cd ~/github/dotfiles/bin
+./defaults.sh
+./install_package.sh
+./setting_tool.sh
+./deploy.sh
