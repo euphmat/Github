@@ -1,10 +1,35 @@
 #!/bin/bash
-set -Ceu
+set -Cu
 
-# Githubディレクトリが存在するかチェック
-cd ~
-if [[ -d ./Github/ ]]; then
-        echo "ある"
+# install Homebrew
+if [[ `type brew > /dev/null 2>&1; echo $?` = 0 ]]; then
+        echo "Homebrew Already Installed."
 else
-        echo "ない"
+        echo "installing Homebrew..."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
+
+# install Git
+if [[ `type git > /dev/null 2>&1; echo $?` = 0 ]]; then
+        echo "Git Already Installed."
+else
+        echo "installing Git..."
+        brew install git
+fi
+
+# Check Github Directory && Clone 
+cd ~
+if [[ -d ~./Github/ ]]; then
+        echo "The Github directory already exists."
+else
+        curl https://github.com/euphmat?tab=repositories | grep -E '.*<a href="\/euphmat\/.*"' | sed -e "s/^.*euphmat\/// "| sed -e "s/\" itemprop=\"name codeRepository\" >//" > repo.txt
+        # Git clone
+        data_source=./repo.txt
+        while read line
+        do
+                repository_name=`echo $line`
+                git clone https://github.com/euphmat/$repository_name
+
+        done < $data_source
+fi
+
