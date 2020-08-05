@@ -1,4 +1,10 @@
 #!/bin/bash
 set -Ceu
 
-echo "curl Test echo"
+# Githubディレクトリが存在するかチェック
+cd ~
+if [[ -d ./Github/ ]]; then
+        echo "ある"
+else
+        echo "ない"
+fi
