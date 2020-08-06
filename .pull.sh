@@ -4,11 +4,11 @@
 cd ~/github
 echo -en "\033[0;34mGithub\033[0;39m"
 if [[ -d ./.git/ ]]; then
-        if [[ `git pull > /dev/null 2>&1 ; echo $?` = 0 ]]; then
-                echo -e " : \033[0;32mSuccessful\033[0;39m"
-        else
-                echo -e " : \033[0;31mFailed\033[0;39m"
-        fi
+  if [[ `git pull > /dev/null 2>&1 ; echo $?` = 0 ]]; then
+    echo -e " : \033[0;32mSuccessful\033[0;39m"
+  else
+    echo -e " : \033[0;31mFailed\033[0;39m"
+  fi
 fi
 
 # Github Directory Path
@@ -35,5 +35,4 @@ for i in ${dirary[@]}; do
   else
     echo -e " : \033[0;33mnot Git Repository\033[0;39m"
   fi
-
 done
