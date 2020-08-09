@@ -2,12 +2,12 @@
 
 # Github Repository Pull
 cd ~/github
-echo -en "\033[0;34mGithub\033[0;39m"
+echo -en "\033[0;34mGithub\033[0;39m "
 if [[ -d ./.git/ ]]; then
   if [[ `git pull > /dev/null 2>&1 ; echo $?` = 0 ]]; then
-    echo -e " : \033[0;32mSuccessful\033[0;39m"
+    echo -e "\033[0;32mSuccessful\033[0;39m"
   else
-    echo -e " : \033[0;31mFailed\033[0;39m"
+    echo -e "\033[0;31mFailed\033[0;39m"
   fi
 fi
 
@@ -24,15 +24,15 @@ done
 
 for i in ${dirary[@]}; do
   reponame=`echo $i | awk -F '/' '{print $(NF)}'`
-  echo -en "└─\033[0;34m$reponame\033[0;39m"
+  echo -en "\033[0;34m$reponame\033[0;39m "
   cd $i
   if [[ -d ./.git/ ]]; then
     if [[ `git pull > /dev/null 2>&1 ; echo $?` = 0 ]]; then
-      echo -e " : \033[0;32mSuccessful\033[0;39m"
+      echo -e "\033[0;32mSuccessful\033[0;39m"
     else
-      echo -e " : \033[0;31mFailed\033[0;39m"
+      echo -e "\033[0;31mFailed\033[0;39m"
     fi
   else
-    echo -e " : \033[0;33mnot Git Repository\033[0;39m"
+    echo -e "\033[0;33mnot Git Repository\033[0;39m"
   fi
 done
