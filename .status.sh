@@ -35,8 +35,8 @@ function print_git_status() {
 # main
 # ================================================
 function main(){
-  echo -en "\033[0;34mGithub\033[0;39m" 
   # Github/
+  echo -en "\033[0;34mGithub\033[0;39m" 
   cd ~/Github; 
   print_git_status
 
