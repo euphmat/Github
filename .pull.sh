@@ -1,38 +1,52 @@
 #!/bin/bash
 
-# Github Repository Pull
-cd ~/github
-echo -en "\033[0;34mGithub\033[0;39m "
-if [[ -d ./.git/ ]]; then
-  if [[ `git pull > /dev/null 2>&1 ; echo $?` = 0 ]]; then
-    echo -e "\033[0;32mSuccessful\033[0;39m"
-  else
-    echo -e "\033[0;31mFailed\033[0;39m"
-  fi
-fi
+function get_directory() {
+  files=~/Github/*
+  dirary=()
+  for filepath in $files; do
+    if [ -d $filepath ] ; then
+      dirary+=("$filepath")
+    fi
+  done
+}
 
-# Github Directory Path
-files=~/Github/*
-
-# main
-dirary=()
-for filepath in $files; do
-  if [ -d $filepath ] ; then
-    dirary+=("$filepath")
-  fi
-done
-
-for i in ${dirary[@]}; do
+function print_repository_name(){
   reponame=`echo $i | awk -F '/' '{print $(NF)}'`
-  echo -en "\033[0;34m$reponame\033[0;39m "
-  cd $i
+  echo -en "\033[0;34m$reponame\033[0;39m" 
+}
+
+function all_git_pull() {
+  branchname=`git branch | grep -E "\*" | sed -e "s/\*//"`
   if [[ -d ./.git/ ]]; then
     if [[ `git pull > /dev/null 2>&1 ; echo $?` = 0 ]]; then
-      echo -e "\033[0;32mSuccessful\033[0;39m"
+      echo -en "$branchname"
+      echo -e " \033[0;32mSuccessfull\033[0;39m"
     else
-      echo -e "\033[0;31mFailed\033[0;39m"
+      echo -en "$branchname"
+      echo -e " \033[0;31mFailed\033[0;39m"
     fi
   else
-    echo -e "\033[0;33mnot Git Repository\033[0;39m"
+    echo -en "$branchname"
+    echo -e " \033[0;33mnot Git Repository\033[0;39m"
   fi
-done
+}
+
+# ================================================
+# main
+# ================================================
+function main(){
+  # Github/
+  echo -en "\033[0;34mGithub\033[0;39m" 
+  cd ~/Github; 
+  all_git_pull
+
+  # Github/*
+  get_directory
+  for i in ${dirary[@]}; do
+    cd $i
+    print_repository_name
+    all_git_pull
+  done
+}
+
+main | column -t
