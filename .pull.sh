@@ -27,7 +27,7 @@ function all_git_pull() {
     fi
   else
     echo -en "$branchname"
-    echo -e " \033[0;33mnot Git Repository\033[0;39m"
+    echo -e " \033[0;33mnotGitRepository\033[0;39m"
   fi
 }
 
