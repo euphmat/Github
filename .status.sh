@@ -1,4 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -Ceuo pipefail
+
+function main(){
+  # Github/
+  echo -en "\033[0;34mGithub\033[0;39m" 
+  cd ~/Github; 
+  print_git_status
+
+  # Github/*
+  get_directory
+  for i in ${dirary[@]}; do
+    cd $i
+    print_repository_name
+    print_git_status
+  done
+}
 
 function get_directory() {
   files=~/Github/*
@@ -29,24 +45,6 @@ function print_git_status() {
     echo -en "$branchname"
     echo -e " \033[0;33mnotGitRepository\033[0;39m"
   fi
-}
-
-# ================================================
-# main
-# ================================================
-function main(){
-  # Github/
-  echo -en "\033[0;34mGithub\033[0;39m" 
-  cd ~/Github; 
-  print_git_status
-
-  # Github/*
-  get_directory
-  for i in ${dirary[@]}; do
-    cd $i
-    print_repository_name
-    print_git_status
-  done
 }
 
 main | column -t
