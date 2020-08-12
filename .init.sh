@@ -1,6 +1,13 @@
 #!/bin/bash
 set -Ceu
 
+function main(){
+    install_homebrew
+    install_git
+    install_github_repository
+    dotscript
+}
+
 function install_homebrew(){
     if [[ `type brew > /dev/null 2>&1; echo $?` = 0 ]]; then
         echo "✅ Homebrew Already Installed."
@@ -49,10 +56,4 @@ function dotscript(){
     ./deploy.sh
 }
 
-function main(){
-    install_homebrew
-    install_git
-    install_github_repository
-    dotscript
-}
 main
