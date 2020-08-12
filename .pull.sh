@@ -1,5 +1,20 @@
 #!/bin/bash
 
+function main(){
+  # Github/
+  echo -en "\033[0;34mGithub\033[0;39m" 
+  cd ~/Github; 
+  all_git_pull
+
+  # Github/*
+  get_directory
+  for i in ${dirary[@]}; do
+    cd $i
+    print_repository_name
+    all_git_pull
+  done
+}
+
 function get_directory() {
   files=~/Github/*
   dirary=()
@@ -29,24 +44,6 @@ function all_git_pull() {
     echo -en "$branchname"
     echo -e " \033[0;33mnotGitRepository\033[0;39m"
   fi
-}
-
-# ================================================
-# main
-# ================================================
-function main(){
-  # Github/
-  echo -en "\033[0;34mGithub\033[0;39m" 
-  cd ~/Github; 
-  all_git_pull
-
-  # Github/*
-  get_directory
-  for i in ${dirary[@]}; do
-    cd $i
-    print_repository_name
-    all_git_pull
-  done
 }
 
 main | column -t
