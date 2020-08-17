@@ -16,7 +16,7 @@ function main(){
   done
 }
 
-function get_directory() {
+function get_directory(){
   files=~/Github/*
   dirary=()
   for filepath in $files; do
@@ -31,7 +31,7 @@ function print_repository_name(){
   echo -en "\033[0;34m$reponame\033[0;39m" 
 }
 
-function print_git_status() {
+function print_git_status(){
   branchname=`git branch | grep -E "\*" | sed -e "s/\*//"`
   if [[ -d ./.git/ ]]; then
     if [ -z "$(git status --porcelain)" ]; then
