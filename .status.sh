@@ -60,4 +60,4 @@ function check_github(){
         fi
 }
 
-main | column -t
+main
