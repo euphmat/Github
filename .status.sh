@@ -2,6 +2,7 @@
 set -Ceuo pipefail
 
 function main(){
+  cd "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
   # Github/
   check_github
   echo -en "\033[0;34mGithub\033[0;39m" 
