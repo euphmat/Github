@@ -6,5 +6,5 @@
 # Allow List
 # ======================
 !.gitignore
-!bin/
-!bin/**
+!.bin/
+!.bin/**
