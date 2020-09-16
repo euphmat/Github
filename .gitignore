@@ -6,6 +6,5 @@
 # Allow List
 # ======================
 !.gitignore
-!.pull.sh
-!.status.sh
-!.init.sh
+!bin/
+!bin/**
