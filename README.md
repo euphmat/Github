@@ -1,15 +1,8 @@
 # Github
-🐈 A repository for storing and managing Github repositories
+🐈 Githubのリポジトリを管理するためのリポジトリです。
 
-## Required
-+ bash
-
-## Usage
-
-### .init.sh
 ```bash
-$ curl -sf https://raw.githubusercontent.com/euphmat/Github/master/.init.sh | sh -s
+📂 .bin          # 自作スクリプト
+📄 .menu.sh      # 自作スクリプトを起動するスクリプト 
+📄 README.md
 ```
-
-### .status.sh
-![gif](https://i.imgur.com/WYFCK8A.gif)
