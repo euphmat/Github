@@ -13,8 +13,6 @@ function create_textfile(){
         curl -s https://github.com/euphmat?tab=repositories | grep -E '.*<a href="\/euphmat\/.*"' >| repo.txt
         sed -i -e "s/^.*euphmat\/// " repo.txt
         sed -i -e "s/\" itemprop=\"name codeRepository\" >//" repo.txt
-        sed -i -e "s/Github//" repo.txt
-        sed -i -e "1d" repo.txt
         data_source=./repo.txt
         while read line
         do
