@@ -1,6 +1,7 @@
 #!/bin/bash
 set -Ceu
 array=()
+
 function main(){
         create_textfile
         convert_text_to_array
@@ -9,6 +10,7 @@ function main(){
         delete_textfile
 }
 
+# リポジトリ一覧が記載されたテキストファイルを生成
 function create_textfile(){
         curl -s https://github.com/euphmat?tab=repositories | grep -E '.*<a href="\/euphmat\/.*"' >| repo.txt
         sed -i -e "s/^.*euphmat\/// " repo.txt
@@ -20,6 +22,7 @@ function create_textfile(){
         done < $data_source
 }
 
+# テキストファイルに記載されたリポジトリ一覧を配列に格納
 function convert_text_to_array(){
         repository_list=./repo.txt
         while read line
@@ -28,6 +31,7 @@ function convert_text_to_array(){
         done < $repository_list
 }
 
+# 配列リポジトリ名を読み込み、メニューとして画面上に表示
 function select_clone_repository(){
         PS3="type Number:"
         select no in "${array[@]}"
@@ -41,10 +45,12 @@ function select_clone_repository(){
         done
 }
 
+# テキストファイルを削除
 function delete_textfile(){
         rm ./repo.txt
 }
 
+# 画面上に改行を表示
 function blank_line(){
         echo ""
 }
