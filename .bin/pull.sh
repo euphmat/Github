@@ -46,4 +46,4 @@ function all_git_pull() {
   fi
 }
 
-main | column -t
+main
