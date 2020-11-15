@@ -50,7 +50,7 @@ function delete_textfile(){
         rm ./repo.txt
 }
 
-# 画面上に改行を表示
+# 改行を表示
 function blank_line(){
         echo ""
 }
