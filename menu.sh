@@ -19,6 +19,7 @@ function create_menu(){
 # create_menu()で作成した配列をメニューとして表示
 function select_menu(){
     PS3="type Number:"
+    echo ""
     select no in ${array[@]}
     do
         case $no in
