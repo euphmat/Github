@@ -2,6 +2,7 @@
 set -Ceuo pipefail
 
 function main(){
+        move_src_directory
         create_menu
         select_menu
 }
@@ -31,4 +32,7 @@ function select_menu(){
     done
 }
 
+function move_src_directory() {
+        cd "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+}
 main
